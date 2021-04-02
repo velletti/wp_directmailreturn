@@ -7,6 +7,8 @@
 =============================
 WP directmailreturn Version 2
 =============================
+- TYPO3 LTS 10: fix warning if CONST typo3_branch does not exist anymore
+- fix missing EXCHANGE Configuration in FetchBouncesUtility  issue #3
 
 - adding command line interface (run with:  ./vendor/bin/typo3cms  wpdirectmailreturn:analyzemail )
 - new Protocol type EXCHANGE to have access to a Microsoft Exchange inbox, (using IMAP4 protocol)

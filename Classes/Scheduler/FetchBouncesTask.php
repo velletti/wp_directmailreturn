@@ -49,7 +49,7 @@ class FetchBouncesTask extends AbstractTask
             return false;
         }
         $this->type = $settings['type'];
-        if (!in_array($this->type, ['IMAP', 'POP', 'POP3', 'IMAPS'], true)) {
+        if (!in_array($this->type, ['IMAP', 'POP', 'POP3', 'IMAPS' , 'EXCHANGE'], true)) {
             $this->outputLine('Configuration incomplete. "type" is invalid. Check EM. Aborting.');
             return false;
         }
@@ -120,6 +120,11 @@ class FetchBouncesTask extends AbstractTask
                 $this->port = $this->port ?: 993;
                 $mb = "{" . $this->host . ":" . $this->port . "/imap/ssl/novalidate-cert" . "}" . $this->inbox;
                 break;
+            case "EXCHANGE":
+                $this->port = $this->port ?: 993;
+                $mb = "{" . $this->host . ":" . $this->port . "/imap/ssl/authuser" . $this->user . "/user=" . $this->user . "}" . $this->inbox;
+                break;
+
             case "POP":
             case "POP3":
                 $this->port = $this->port ?: 110;

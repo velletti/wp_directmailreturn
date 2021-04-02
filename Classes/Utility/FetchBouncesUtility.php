@@ -13,7 +13,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 class FetchBouncesUtility
 {
 
-    /** @var string IMAP, POP3, IMAPS */
+    /** @var string IMAP, POP3, IMAPS or EXCHANGE */
     public $type = 'IMAP';
 
     /** @var string host of the Mailserver */
@@ -85,7 +85,7 @@ class FetchBouncesUtility
             }
         }
         $this->type = $settings['type'];
-        if (!in_array($this->type, ['IMAP', 'POP', 'POP3', 'IMAPS'], true)) {
+        if (!in_array($this->type, ['IMAP', 'POP', 'POP3', 'IMAPS', 'EXCHANGE'], true)) {
             $this->errorMsg = 'Configuration incomplete. "type" is invalid. Check EM. Aborting.' ;
             return false;
         }
